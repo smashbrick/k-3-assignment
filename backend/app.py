@@ -30,7 +30,7 @@ def create_question():
         "marks": data['marks']
     }
 
-    doc_ref = db.collection("users").document()
+    doc_ref = db.collection("questions").document()
     doc_ref.set(new_question)
 
     return jsonify({"message": "Question created successfully!"}), 201
@@ -38,14 +38,14 @@ def create_question():
 # # DELETE /api/deleteQuestionByID
 @app.route('/api/deleteQuestionByID/<string:question_id>', methods=['DELETE'])
 def delete_question(question_id):
-    db.collection("users").document(question_id).delete()
+    db.collection("questions").document(question_id).delete()
     return jsonify({"message": "Question deleted successfully!"}), 200
 
 # GET /api/getQuizQuestions
 @app.route('/api/getQuizQuestions', methods=['GET'])
 def get_questions():
     try:
-        users_ref = db.collection("users")
+        users_ref = db.collection("questions")
         docs = users_ref.stream()
         questions = []
 

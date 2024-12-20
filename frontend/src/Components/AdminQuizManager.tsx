@@ -83,14 +83,14 @@ function AdminQuizManager() {
 					throw new Error("Failed to add question.");
 				}
 
-				setQuestions([...questions, newQuestion]);
-				setNewQuestion({
-					id: "",
-					questionText: "",
-					options: ["", "", "", ""],
-					correctAnswer: 1,
-					marks: 1,
-				});
+				const response2 = await fetch(
+					"http://127.0.0.1:5000/api/getQuizQuestions"
+				);
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+				const data = await response2.json();
+				setQuestions(data);
 			} catch (error) {
 				if (error instanceof Error) {
 					alert(`Error: ${error.message}`);
