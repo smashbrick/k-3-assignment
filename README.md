@@ -16,11 +16,11 @@ Encountered an issue while building with Vite. For more details, visit the follo
 
 ### 1. First Login Page
 
-![First Login Page](/frontend/public/admin.png)
+![First Login Page](/frontend/public/login.png)
 
 ### 2. Admin Page
 
-![Admin Page](/frontend/public/login.png)
+![Admin Page](/frontend/public/admin.png)
 
 ## Setup Instructions
 
