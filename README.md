@@ -2,7 +2,7 @@
 
 ## Description
 
-You just witnessed the creation of a comprehensive quiz application. This app allows administrators to manage and create quiz questions with various features such as adding, editing, and deleting questions. The intuitive admin interface ensures seamless navigation through different sections, including managing multiple-choice questions, setting correct answers, and assigning marks. With support for user authentication, only authorized admins can access and manage the quiz content. The app also includes visual feedback through screenshots of different sections for a smooth user experience.
+This app allows administrators to manage and create quiz questions with various features such as adding, editing, and deleting questions. The intuitive admin interface ensures seamless navigation through different sections, including managing multiple-choice questions, setting correct answers, and assigning marks. With support for user authentication, only authorized admins can access and manage the quiz content. The app also includes visual feedback through screenshots of different sections for a smooth user experience.
 
 ## Issues Faced
 
@@ -21,6 +21,14 @@ Encountered an issue while building with Vite. For more details, visit the follo
 ### 2. Admin Page
 
 ![Admin Page](/frontend/public/admin.png)
+
+## Accessing Admin Page
+
+To access the admin page, visit the following URL (replace `your_port` with the actual port number where your frontend is running):  
+`http://localhost:your_port/admin`
+
+Users can access the questions page normally by default, accessible through:  
+`http://localhost:your_port/`
 
 ## Setup Instructions
 
