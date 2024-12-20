@@ -27,18 +27,25 @@ function AdminQuizManager() {
 	});
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+	const fetchData = async () => {
+		try {
+			const response = await fetch(
+				"http://127.0.0.1:5000/api/getQuizQuestions"
+			);
+			if (!response.ok) {
+				throw new Error("Network response was not ok");
+			}
+			const data = await response.json();
+			setQuestions(data);
+		} catch (error) {
+			console.error("Error fetching quiz data:", error);
+		}
+	};
+
 	useEffect(() => {
 		const fetchQuizData = async () => {
 			try {
-				const response = await fetch(
-					"http://127.0.0.1:5000/api/getQuizQuestions"
-				);
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-				const data = await response.json();
-				setQuestions(data);
-				console.log(data);
+				await fetchData();
 			} catch (error) {
 				console.error("Error fetching quiz data:", error);
 			}
@@ -83,14 +90,7 @@ function AdminQuizManager() {
 					throw new Error("Failed to add question.");
 				}
 
-				const response2 = await fetch(
-					"http://127.0.0.1:5000/api/getQuizQuestions"
-				);
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-				const data = await response2.json();
-				setQuestions(data);
+				await fetchData();
 			} catch (error) {
 				if (error instanceof Error) {
 					alert(`Error: ${error.message}`);
