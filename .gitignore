@@ -1,0 +1,42 @@
+# Node.js
+node_modules/
+*/node_modules/
+
+*/package-lock.json
+*/credentials.json
+
+# Logs
+logs/
+*.log
+*.log.*
+debug.log
+
+# Build output
+dist/
+build/
+
+# Dependency directories
+bower_components/
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+*.lock
+*.swp
+*.swo
+
+
