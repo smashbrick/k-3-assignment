@@ -20,13 +20,14 @@ CORS(app)
 @app.route('/api/createQuestion', methods=['POST'])
 def create_question():
     data = request.get_json()
+    num = int(data['correctAnswer'])
     new_question = {
         "question_text": data['questionText'],
         "option1": data['options'][0],
         "option2": data['options'][1],
         "option3": data['options'][2],
         "option4": data['options'][3],
-        "answer": data['correctAnswer'],
+        "answer": data['options'][num],
         "marks": data['marks']
     }
 

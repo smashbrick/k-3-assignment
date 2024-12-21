@@ -36,7 +36,22 @@ function AdminQuizManager() {
 				throw new Error("Network response was not ok");
 			}
 			const data = await response.json();
-			setQuestions(data);
+			const questions: Question[] = [];
+
+			// @ts-expect-error any type fix
+			data.map((d) => {
+				const q: Question = {
+					id: d.id,
+					questionText: d.question_text,
+					options: d.options,
+					correctAnswer: d.correct_answer,
+					marks: d.marks,
+				};
+
+				questions.push(q);
+			});
+
+			setQuestions(questions);
 		} catch (error) {
 			console.error("Error fetching quiz data:", error);
 		}
@@ -53,6 +68,7 @@ function AdminQuizManager() {
 
 		fetchQuizData();
 	}, []);
+
 	const handleInputChange = (
 		field: keyof NewQuestion,
 		value: string | number | string[]
@@ -169,9 +185,7 @@ function AdminQuizManager() {
 					</label>
 					<select
 						value={newQuestion.correctAnswer}
-						onChange={(e) =>
-							handleInputChange("correctAnswer", parseInt(e.target.value))
-						}
+						onChange={(e) => handleInputChange("correctAnswer", e.target.value)}
 						className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
 					>
 						{[1, 2, 3, 4].map((num) => (
